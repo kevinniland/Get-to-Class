@@ -31,4 +31,19 @@ public class PlayerMovement : MonoBehaviour
         // transform.position = new Vector2(newXPos, newYPos);
         transform.position = new Vector2(newXPos, transform.position.y);
     }
+
+    public void SaveGameState() {
+        SaveGame.SavePlayerData(this);
+    }
+
+    public void LoadGameState() {
+        PlayerSaveData playerSaveData = SaveGame.LoadPlayerData();
+
+        Vector3 savedPlayerPosition;
+        savedPlayerPosition.x = playerSaveData.playerPosition[0];
+        savedPlayerPosition.y = playerSaveData.playerPosition[1];
+        savedPlayerPosition.z = playerSaveData.playerPosition[2];
+
+        transform.position = savedPlayerPosition;
+    }
 }
