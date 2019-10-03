@@ -178,6 +178,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGrounded: 0
   jumpVelocity: 10
+  jumpHeight: 15
+  moveSpeed: 50
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!50 &417872868
 Rigidbody2D:
   serializedVersion: 4
@@ -465,7 +470,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c166ab3fe96c67c49b73fa4f5a40d86d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.007843138}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
