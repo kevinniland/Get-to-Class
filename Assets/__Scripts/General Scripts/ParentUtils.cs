@@ -14,7 +14,7 @@ namespace Utilities {
             var parent = GameObject.Find(parentName);
 
             if (!parent) {
-
+                parent = new GameObject("parentName");
             }
 
             return parent;
