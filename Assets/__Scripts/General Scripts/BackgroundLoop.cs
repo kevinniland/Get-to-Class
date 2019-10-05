@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class BackgroundLoop : MonoBehaviour {
     #region public variables
-    public GameObject[] levels; //List of game objects - contains the background objects to be repeated
-    public float choke;
+    public GameObject[] levels; // List of game objects - contains the background objects to be repeated
+    public float choke; // 
     #endregion
 
     #region private variables
@@ -26,9 +26,8 @@ public class BackgroundLoop : MonoBehaviour {
         /* Iterates through the game objects contained in the list
          * ========================================================
          * 'gameObject' creates a local reference which contains the value of the current row in the list.
-         * Doing this, we can call the function 'LoadChildObjects' and pass 'gameObject' in as a reference - currently, we only have one background
-         * sprite. If we had more than one, this would go through the entire list of sprites and repeat the last one first, then the second last one
-         * and so on. In Unity, we define the size of the list and define each element afterwards
+         * Doing this, we can call the function 'LoadChildObjects' and pass 'gameObject' in as a reference - this goes through 
+         * the entire list of sprites and repeat the last one first, then the second last one and so on. In Unity, we define the size of the list and define each element afterwards
          */
         foreach (GameObject gameObject in levels) {
             LoadChildObjects(gameObject);
@@ -37,23 +36,30 @@ public class BackgroundLoop : MonoBehaviour {
 
     // Loads the background 'sprites' so that they fill the screen
     void LoadChildObjects(GameObject gameObject) {
+        // Gives horizontal value of the boundary box of the sprite
         float objectWidth = gameObject.GetComponent<SpriteRenderer>().bounds.size.x - choke;
+
+        // Determines number of clones needed to fill the width of the screen. Need to cast to int as screenBounds and objectWidth are floats
         int childsNeeded = (int) Mathf.Ceil((screenBounds.x * 2) / objectWidth);
 
+        // Clone the sprites
         GameObject clone = Instantiate(gameObject) as GameObject;
 
+        // Creates all child objects
         for (int i = 0; i <= childsNeeded; i++) {
             GameObject gOC = Instantiate(clone) as GameObject;
 
+            // Sets new clone to be a child object of the player object, and sets their position
             gOC.transform.SetParent(gameObject.transform);
             gOC.transform.position = new Vector3(objectWidth * i, gameObject.transform.position.y, gameObject.transform.position.z);
-            gOC.name = gameObject.name + i;
         }
 
+        // Destroy clone object and sprite renderer object of parent object
         Destroy(clone);
         Destroy(gameObject.GetComponent<SpriteRenderer>());
     }
 
+    // Reposition child objects so they are always filling the scene
     void repositionChildObjects(GameObject gameObject) {
         Transform[] children = gameObject.GetComponentsInChildren<Transform>();
 
@@ -74,7 +80,7 @@ public class BackgroundLoop : MonoBehaviour {
             }
         }
     }
-
+    
     void LateUpdate() {
         foreach(GameObject gameObject in levels) {
             repositionChildObjects(gameObject);
