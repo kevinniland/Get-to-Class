@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3170534798689136512}
   - component: {fileID: 8213441733757507180}
   - component: {fileID: 5435882967318027722}
+  - component: {fileID: -2944103082157912389}
   m_Layer: 0
   m_Name: Bully
   m_TagString: Untagged
@@ -142,3 +143,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d17527cd7d7e8a24bbac16090ec70d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2944103082157912389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3918380092168698969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 740751d8946a9b642a41cd256077dea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySpeed: 25
