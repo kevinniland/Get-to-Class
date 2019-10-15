@@ -10,13 +10,11 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         Move();
     }
 
-    private void Move()
-    {
+    private void Move() {
         // Get input from user
         var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
 
@@ -45,5 +43,11 @@ public class PlayerMovement : MonoBehaviour
         savedPlayerPosition.z = playerSaveData.playerPosition[2];
 
         transform.position = savedPlayerPosition;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.collider.tag.Equals("Enemy")) {
+            Debug.Log("Billy is dead dead");
+        }
     }
 }
