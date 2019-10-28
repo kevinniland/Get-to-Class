@@ -2284,7 +2284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGrounded: 0
   jumpVelocity: 10
-  jumpHeight: 5
+  jumpHeight: 23
   moveSpeed: 30
   groundLayerMask:
     serializedVersion: 2

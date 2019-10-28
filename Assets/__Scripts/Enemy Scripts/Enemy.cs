@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    #region private variables
+    private Rigidbody2D rigidbody2D;
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +18,11 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnTriggerEnter2D(Collider2D collider2D) {
+        if (collider2D.tag == "Player") {
+            Destroy(this.gameObject);
+        }
     }
 }
