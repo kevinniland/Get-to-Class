@@ -1,9 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PlayerMovement : MonoBehaviour
-{
+public class PlayerMovement : MonoBehaviour {
+    #region public variables
+    public static bool isBillyDead = false; // This is accessible from and can be checked whether or not Billy is dead from other scripts
+    public GameObject gameOver; // Creates a reference to the game over screen
+    public PlayerMovement playerMovement;
+    public SceneFader sceneFader; // Reference to scene fader object
+    #endregion
+
     #region private variables
     [SerializeField]
     private float moveSpeed = 5.0f;
@@ -47,7 +55,18 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider.tag.Equals("Enemy")) {
-            Debug.Log("Billy is dead dead");
+            /* 
+             * Enables the game object. The game object in question is the pause menu UI. We set it to true here as we want to
+             * enable it i.e. show it
+             */
+            gameOver.SetActive(true);
+            Time.timeScale = 0f; // Freezes time in the game, effectively pausing the game
+
+            isBillyDead = true;
         }
+    }
+
+    public void RestartLevel() {
+        sceneFader.FadeTransition(SceneManager.GetActiveScene().name);
     }
 }

@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PauseMenu : MonoBehaviour
-{
+public class PauseMenu : MonoBehaviour {
     #region public variables
     public static bool isGamePaused = false; // This is accessible from and can be checked whether or not the game is paused from other scripts
     public GameObject gameUI; // Creates a reference to the game's UI. In this case, the pause menu

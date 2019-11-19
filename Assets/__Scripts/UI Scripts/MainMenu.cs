@@ -12,20 +12,6 @@ public class MainMenu : MonoBehaviour {
 
     // In order to call this from the button, method needs to be public
     public void PlayGame() {
-        //switch (this.gameObject.name)
-        //{
-        //    case "Level1Button":
-        //        SceneManager.LoadScene("Level1");
-        //        Debug.Log("Button pressed");
-        //        break;
-        //    case "Level2Button":
-        //        SceneManager.LoadScene("Level2");
-        //        break;
-        //    case "Level3Button":
-        //        SceneManager.LoadScene("Level3");
-        //        break;
-        //}
-
         sceneFader.FadeTransition(loadLevel);
     }
 

@@ -9,6 +9,8 @@ TagManager:
   - Level2
   - Level3
   - Enemy
+  - Collectible
+  - SceneChange
   layers:
   - Default
   - TransparentFX

@@ -9,8 +9,8 @@ public class SceneFader : MonoBehaviour {
     public Image image; //  Reference to canvas image
     #endregion
 
+    // Start is called before the first frame update
     void Start() {
-        // 
         StartCoroutine(FadeIn());
     }
 
