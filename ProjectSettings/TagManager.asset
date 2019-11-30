@@ -11,6 +11,8 @@ TagManager:
   - Enemy
   - Collectible
   - SceneChange
+  - MoveLeft
+  - MoveRight
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public class LevelEnd : MonoBehaviour {
@@ -18,19 +18,12 @@ public class LevelEnd : MonoBehaviour {
         Debug.Log(numberOfCollectibles);
     }
 
-    public void LevelComplete() {
-        /* Enables the game object. The game object in question is the pause menu UI. We set it to true here as we want to
-         * enable it i.e. show it
-         */
-        //gameUI.SetActive(true);
-        Time.timeScale = 0f; // Freezes time in the game, effectively pausing the game
-    }
-
     void OnTriggerEnter2D(Collider2D collider2D) {
         if (collider2D.tag == "SceneChange") {
-            LevelComplete();
+            Debug.Log("You have collected " + collectiblesCollected);
 
-            Debug.Log("You have collected " + collectiblesCollected);     
+            // Saves the player's high score
+            PlayerPrefs.SetInt("High Score", collectiblesCollected);
         } else {
             Debug.Log("Keep going!");
         }

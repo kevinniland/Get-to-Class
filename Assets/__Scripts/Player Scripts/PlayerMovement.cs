@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour {
     #region public variables
     public static bool isBillyDead = false; // This is accessible from and can be checked whether or not Billy is dead from other scripts
-    public GameObject gameOver; // Creates a reference to the game over screen
     public PlayerMovement playerMovement;
     public SceneFader sceneFader; // Reference to scene fader object
     #endregion
@@ -42,7 +41,8 @@ public class PlayerMovement : MonoBehaviour {
         SaveGame.SavePlayerData(this);
     }
 
-    public void LoadGameState() {
+    public void LoadGameState()
+    {
         PlayerSaveData playerSaveData = SaveGame.LoadPlayerData();
 
         Vector3 savedPlayerPosition;
@@ -55,11 +55,6 @@ public class PlayerMovement : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider.tag.Equals("Enemy")) {
-            /* 
-             * Enables the game object. The game object in question is the pause menu UI. We set it to true here as we want to
-             * enable it i.e. show it
-             */
-            gameOver.SetActive(true);
             Time.timeScale = 0f; // Freezes time in the game, effectively pausing the game
 
             isBillyDead = true;
