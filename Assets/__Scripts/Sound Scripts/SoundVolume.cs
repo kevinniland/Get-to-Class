@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class SoundVolume : MonoBehaviour {
     #region public variables
@@ -21,13 +21,13 @@ public class SoundVolume : MonoBehaviour {
      */
     // public void SetSoundVolume(float sliderVolume) {  
     public void SetSoundVolume() {
-        float volumeVlaue = soundSlider.value;
+        float volumeValue = soundSlider.value;
         /* 
          * Takes in two parameters - name of the exposed parameter and the value on the slider i.e the volume
          * Need to convert sliderVolume to a logarithmic value. We also set the minimum value on the slider to be 0.0001. Having the minimum value 
          * be 0 will break this whole feature if the sound volume ever does become 0
          */
-        audioMixer.SetFloat("SoundVolume", Mathf.Log10(volumeVlaue) * 20);
-        PlayerPrefs.GetFloat("SoundSlider", volumeVlaue);
+        audioMixer.SetFloat("SoundVolume", Mathf.Log10(volumeValue) * 20);
+        PlayerPrefs.GetFloat("SoundSlider", volumeValue);
     }
 }

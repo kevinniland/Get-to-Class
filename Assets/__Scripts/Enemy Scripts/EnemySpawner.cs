@@ -7,9 +7,12 @@ public class EnemySpawner : MonoBehaviour {
     #region private variables
     [SerializeField]
     private Enemy enemy; // Reference to the enemy prefab
+
+    [SerializeField]
+    private int maxEnemies = 25; // Determines maximum number of enemies that can be spawned
+
     private GameObject enemyParent; // Reference to the enemy parent object
     private int enemyCounter = 0; // Counter for enemies. It is incremented on enemy spawn
-    private int maxEnemies = 25; // Determines maximum number of enemies that can be spawned
 
     private List<Enemy> enemies; // List of enemies
     #endregion

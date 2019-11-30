@@ -1594,18 +1594,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 184045439903383427, guid: c25b4c358e37a6a4dbf58366894a2254,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 184045439127554721, guid: c25b4c358e37a6a4dbf58366894a2254,
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.9000244
       objectReference: {fileID: 0}
+    - target: {fileID: 184045439903383427, guid: c25b4c358e37a6a4dbf58366894a2254,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c25b4c358e37a6a4dbf58366894a2254, type: 3}
+--- !u!114 &1064524768 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 184045440593913767, guid: c25b4c358e37a6a4dbf58366894a2254,
+    type: 3}
+  m_PrefabInstance: {fileID: 1064524767}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcb7024106a45e4292afb9f245b4b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1201004870
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,6 +1738,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d595dc8d7e5514983c72f0eaf4f467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneFader: {fileID: 1064524768}
+  levelToUnlockName: Level2
+  levelToUnlockIndex: 2
   nextLevel: Level3
 --- !u!1 &1409882023
 GameObject:
@@ -2284,7 +2299,6 @@ GameObject:
   - component: {fileID: 1939650900}
   - component: {fileID: 1939650906}
   - component: {fileID: 1939650905}
-  - component: {fileID: 1939650904}
   - component: {fileID: 1939650903}
   - component: {fileID: 1939650902}
   m_Layer: 0
@@ -2395,19 +2409,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da24e487bf083ed43a591ec2f5f8a7d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: {fileID: 0}
+  playerMovement: {fileID: 1939650903}
+  sceneFader: {fileID: 1064524768}
   moveSpeed: 30
---- !u!114 &1939650904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1939650899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4db9e599082964145a6f557b03fae50d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1939650905
 MonoBehaviour:
   m_ObjectHideFlags: 0

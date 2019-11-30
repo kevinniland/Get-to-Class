@@ -21,13 +21,13 @@ public class MusicVolume : MonoBehaviour {
      */
     // public void SetMusicVolume(float sliderVolume) {  
     public void SetMusicVolume() {
-        float volumeVlaue = musicSlider.value;
+        float volumeValue = musicSlider.value;
         /* 
          * Takes in two parameters - name of the exposed parameter and the value on the slider i.e the volume
          * Need to convert sliderVolume to a logarithmic value. We also set the minimum value on the slider to be 0.0001. Having the minimum value 
          * be 0 will break this whole feature if the music volume ever does become 0
          */
-        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volumeVlaue) * 20);
-        PlayerPrefs.GetFloat("MusicSlider", volumeVlaue);
+        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volumeValue) * 20);
+        PlayerPrefs.GetFloat("MusicSlider", volumeValue);
     }
 }
