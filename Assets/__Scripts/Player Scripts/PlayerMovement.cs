@@ -23,14 +23,15 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Move() {
         // Get input from user
+        //var deltaX = CrossPlatformInputManager.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
         var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
-
+        //Debug.Log(CrossPlatformInputManager.VirtualAxisReference("Vertical"));
         // Calculate new X position
         var newXPos = transform.position.x + deltaX;
 
         // Check vertical
-        var deltaY = Input.GetAxis("Vertical");
-        var newYPos = transform.position.y + deltaY;
+        //var deltaY = Input.GetAxis("Vertical");
+        //var newYPos = transform.position.y + deltaY;
 
         // Set current game object to the new position
         // transform.position = new Vector2(newXPos, newYPos);

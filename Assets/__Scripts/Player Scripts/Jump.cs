@@ -33,7 +33,7 @@ public class Jump : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space)) {
+        if ((IsGrounded() && Input.GetKeyDown(KeyCode.Space)) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)) {
             rigidbody2D.velocity = Vector2.up * (jumpVelocity + jumpHeight);
         }
 
