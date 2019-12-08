@@ -9,6 +9,6 @@ public class HighScore : MonoBehaviour {
     #endregion
 
     void Start() {
-        highScoreText.text = "High Score: " + PlayerPrefs.GetInt("High Score");
+        //highScoreText.text = "High Score: " + PlayerPrefs.GetInt("High Score");
     }
 }

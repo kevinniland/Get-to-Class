@@ -53,16 +53,4 @@ public class PlayerMovement : MonoBehaviour {
 
         transform.position = savedPlayerPosition;
     }
-
-    void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.collider.tag.Equals("Enemy")) {
-            Time.timeScale = 0f; // Freezes time in the game, effectively pausing the game
-
-            isBillyDead = true;
-        }
-    }
-
-    public void RestartLevel() {
-        sceneFader.FadeTransition(SceneManager.GetActiveScene().name);
-    }
 }

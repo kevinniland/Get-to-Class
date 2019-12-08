@@ -24,9 +24,7 @@ public class LevelEnd : MonoBehaviour {
 
             // Saves the player's high score
             PlayerPrefs.SetInt("High Score", collectiblesCollected);
-        } else {
-            Debug.Log("Keep going!");
-        }
+        } 
 
         if (collider2D.tag == "Collectible") {
             // Destroy/"Collect" the collectible

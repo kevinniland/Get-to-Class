@@ -2,28 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCollision : MonoBehaviour {
+public class RestartLevel : MonoBehaviour {
     #region public variables
-    //public PlayerMovement playerMovement; // Reference to player movement
     public static bool isBillyDead = false; // This is accessible from and can be checked whether or not the character is dead from other scripts
     public GameObject gameUI; // Creates a reference to the game's UI. In this case, the restart menu
+    public PlayerMovement playerMovement;
     #endregion
 
     // Update is called once per frame
     void Update() {
         if (isBillyDead == true) {
-            Debug.Log("You dead!");
-
             RestartGame();
         } else {
-            //Debug.Log("You ain't dead yet. Keep going!");
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision2D) {
-        if (collision2D.gameObject.tag.Equals("Enemy")) {
-            isBillyDead = true;
-            Debug.Log("asad");
+            Debug.Log("You ain't dead yet. Keep going!");
         }
     }
 
