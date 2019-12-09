@@ -814,6 +814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 5435882967318027722, guid: 2792c759652dc2643a7525e1f9da2a86, type: 3}
+  maxEnemies: 25
 --- !u!1 &591590211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,8 +1740,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneFader: {fileID: 1064524768}
-  levelToUnlockName: Level2
-  levelToUnlockIndex: 2
   nextLevel: Level3
 --- !u!1 &1409882023
 GameObject:
@@ -2409,7 +2408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da24e487bf083ed43a591ec2f5f8a7d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOver: {fileID: 0}
   playerMovement: {fileID: 1939650903}
   sceneFader: {fileID: 1064524768}
   moveSpeed: 30
@@ -2452,7 +2450,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 1
 --- !u!1 &2121752607
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,20 +12,21 @@ public class PlayerMovement : MonoBehaviour {
     #endregion
 
     #region private variables
+    // Serialize this field - allows us to change the values of this in the Unity editor itself
     [SerializeField]
     private float moveSpeed = 5.0f;
     #endregion
 
     // Update is called once per frame
     void Update() {
+        // Call Move() every frame
         Move();
     }
 
     private void Move() {
         // Get input from user
-        //var deltaX = CrossPlatformInputManager.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
         var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
-        //Debug.Log(CrossPlatformInputManager.VirtualAxisReference("Vertical"));
+
         // Calculate new X position
         var newXPos = transform.position.x + deltaX;
 
@@ -39,18 +40,21 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void SaveGameState() {
+        // Call SavePlayerData from the SaveGame script and pass in this i.e. the player
         SaveGame.SavePlayerData(this);
     }
 
-    public void LoadGameState()
-    {
+    // Loads the game state - very basic load game implementation. Loads the players previously saved position
+    public void LoadGameState() {
         PlayerSaveData playerSaveData = SaveGame.LoadPlayerData();
 
+        // Vector3 to store player position on the x, y, and z axis
         Vector3 savedPlayerPosition;
         savedPlayerPosition.x = playerSaveData.playerPosition[0];
         savedPlayerPosition.y = playerSaveData.playerPosition[1];
         savedPlayerPosition.z = playerSaveData.playerPosition[2];
 
+        // Current position of the player is then set to that of the saved position
         transform.position = savedPlayerPosition;
     }
 }

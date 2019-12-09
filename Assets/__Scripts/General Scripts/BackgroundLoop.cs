@@ -6,7 +6,7 @@ using UnityEngine;
 public class BackgroundLoop : MonoBehaviour {
     #region public variables
     public GameObject[] levels; // List of game objects - contains the background objects to be repeated
-    public float choke; // 
+    public float choke; // Makes it so each object (background sprite) come in on both sides - avoids any spaces between any rendered background sprite
     #endregion
 
     #region private variables
@@ -63,18 +63,20 @@ public class BackgroundLoop : MonoBehaviour {
     void repositionChildObjects(GameObject gameObject) {
         Transform[] children = gameObject.GetComponentsInChildren<Transform>();
 
+        // Make sure there's at least more than 1 child in the children array
         if (children.Length > 1) {
-            GameObject firstChild = children[1].gameObject;
-            GameObject lastChild = children[children.Length - 1].gameObject;
+            GameObject firstChild = children[1].gameObject; // Set the first child to be the second element (parent is the first element)
+            GameObject lastChild = children[children.Length - 1].gameObject; // Set the last child to be the last element
 
             float halfObjectWidth = lastChild.GetComponent<SpriteRenderer>().bounds.extents.x - choke;
 
+            // Checks if camera is exposing the right side or left side
             if (transform.position.x + screenBounds.x > lastChild.transform.position.x + halfObjectWidth) {
-                firstChild.transform.SetAsLastSibling();
+                firstChild.transform.SetAsLastSibling(); // Sets the first child as the last child
                 firstChild.transform.position = new Vector3(lastChild.transform.position.x + halfObjectWidth * 2, 
                     lastChild.transform.position.y, lastChild.transform.position.z);
             } else if (transform.position.x - screenBounds.x < firstChild.transform.position.x - halfObjectWidth) {
-                lastChild.transform.SetAsFirstSibling();
+                lastChild.transform.SetAsFirstSibling(); // Sets the last child as the first child
                 lastChild.transform.position = new Vector3(firstChild.transform.position.x - halfObjectWidth * 2, firstChild.transform.position.y, 
                     firstChild.transform.position.z);
             }
@@ -82,7 +84,8 @@ public class BackgroundLoop : MonoBehaviour {
     }
     
     void LateUpdate() {
-        foreach(GameObject gameObject in levels) {
+        // for each game object in the levels array, call repositionChildObjects() and pass in the game object
+        foreach (GameObject gameObject in levels) {
             repositionChildObjects(gameObject);
         }
     }
