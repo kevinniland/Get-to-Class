@@ -14,7 +14,7 @@ public class PlayerCollision : MonoBehaviour {
         if (isBillyDead == true) {
             Debug.Log("You dead!");
 
-            RestartGame();
+            Application.Quit();
         } else {
             //Debug.Log("You ain't dead yet. Keep going!");
         }
