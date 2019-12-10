@@ -26,4 +26,12 @@ public class FollowPlayer : MonoBehaviour {
             transform.position = Vector2.MoveTowards(transform.position, player.position, enemySpeed * Time.deltaTime);
         }
     }
+    public void FreezeEnemies() {
+        enemySpeed = 0.0f;
+        transform.SetPositionAndRotation(transform.position, new Quaternion(0, 0, 0, 0));
+    }
+
+    public void ResetSpeed() {
+        enemySpeed = 1.0f;
+    }
 }

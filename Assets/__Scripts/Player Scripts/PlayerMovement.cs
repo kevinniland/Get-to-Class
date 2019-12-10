@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
     public static bool isBillyDead = false; // This is accessible from and can be checked whether or not Billy is dead from other scripts
     public PlayerMovement playerMovement;
     public SceneFader sceneFader; // Reference to scene fader object
+    public bool isMoving = true;
     #endregion
 
     #region private variables
@@ -19,8 +20,10 @@ public class PlayerMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        // Call Move() every frame
-        Move();
+        // Call Move() every frame if player is still alive
+        if (isMoving) {
+            Move();
+        }
     }
 
     private void Move() {
@@ -56,5 +59,9 @@ public class PlayerMovement : MonoBehaviour {
 
         // Current position of the player is then set to that of the saved position
         transform.position = savedPlayerPosition;
+    }
+
+    public void PlayerDied() {
+        isMoving = false;
     }
 }

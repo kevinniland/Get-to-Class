@@ -7,38 +7,42 @@ public class PlayerCollision : MonoBehaviour {
     #region public variables
     //public PlayerMovement playerMovement; // Reference to player movement
     public static bool isBillyDead = false; // This is accessible from and can be checked whether or not the character is dead from other scripts
-    public GameObject gameUI; // Creates a reference to the game's UI. In this case, the restart menu
     public Image image; //  Reference to canvas image
-    public Button button;
     public float time = 3;
+    FollowPlayer[] enemies;
+    PlayerMovement player;
     #endregion
+
+    
 
     void OnCollisionEnter2D(Collision2D collision2D) {
         if (collision2D.gameObject.tag.Equals("Enemy")) {
-            //Debug.Log("You died");
+            player = FindObjectOfType<PlayerMovement>();
+            player.PlayerDied();
 
-            //gameUI.SetActive(true);
-
-
-            //StartCoroutine(DisplayGameOver());
-
-            StartCoroutine(FadeIn());
+            StartCoroutine(DisplayGameOver());
         }
     }
 
     // Specifies the scene/level to fade/transition to
-    public void FadeTransition(string level) {
+    public void FadeTransition(string level)
+    {
         StartCoroutine(FadeOut(level));
     }
 
-    IEnumerator DisplayGameOver() {
+    IEnumerator DisplayGameOver()
+    {
         Debug.Log("You died! Restarting level in 5 seconds...");
-        //Time.timeScale = 0.1f;
+        enemies = FindObjectsOfType<FollowPlayer>();
 
+        for(int i = 0; i <= enemies.Length - 1; i++) {
+            enemies[i].FreezeEnemies();
+        }
+        
         yield return new WaitForSeconds(1);
 
         StartCoroutine(FadeIn());
-
+        SceneManager.LoadScene("Level1");
         Debug.Log("Restarting level now!");
     }
 
@@ -64,6 +68,6 @@ public class PlayerCollision : MonoBehaviour {
         }
 
         // Pass in the scene to fade to 
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(level);
     }
 }

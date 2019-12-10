@@ -18,7 +18,7 @@ public class RestartLevel : MonoBehaviour {
         }
     }
 
-    void RestartGame() {
+    public void RestartGame() {
         /* Enables the game object. The game object in question is the pause menu UI. We set it to true here as we want to
          * enable it i.e. show it
          */
