@@ -13,6 +13,7 @@ TagManager:
   - SceneChange
   - MoveLeft
   - MoveRight
+  - Enemies
   layers:
   - Default
   - TransparentFX

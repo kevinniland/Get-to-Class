@@ -5,44 +5,64 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCollision : MonoBehaviour {
     #region public variables
-    //public PlayerMovement playerMovement; // Reference to player movement
     public static bool isBillyDead = false; // This is accessible from and can be checked whether or not the character is dead from other scripts
     public Image image; //  Reference to canvas image
-    public float time = 3;
-    FollowPlayer[] enemies;
-    PlayerMovement player;
+    FollowPlayer[] enemies; // Array for all enemies - used to freeze enemies on collision
+    PlayerMovement player; // Reference to player - used primarily to freeze the player on collision
+    public GameObject gameUI; // Reference to game over menu
     #endregion
 
-    
-
+    /*
+     * On collision, check if the object the player collided with has the tag "Enemy", find the object of type "PlayerMovement", then calls PlayerDied()
+     * This will disable player movement temporarily until the level restarts. Then start a coroutine for the game over sequence
+     */
     void OnCollisionEnter2D(Collision2D collision2D) {
         if (collision2D.gameObject.tag.Equals("Enemy")) {
-            player = FindObjectOfType<PlayerMovement>();
-            player.PlayerDied();
+            player = FindObjectOfType<PlayerMovement>(); // Find the object of type PlayerMovement
+            player.PlayerDied(); // Disables player movement
 
-            StartCoroutine(DisplayGameOver());
+            gameUI.SetActive(true); // Set the game over UI menu to active on collision
+
+            StartCoroutine(DisplayGameOver()); // Start the game over sequence
         }
     }
 
     // Specifies the scene/level to fade/transition to
-    public void FadeTransition(string level)
-    {
-        StartCoroutine(FadeOut(level));
+    public void FadeTransition(string level) {
+        StartCoroutine(FadeOut(level)); // Fade out of the level
     }
 
-    IEnumerator DisplayGameOver()
-    {
-        Debug.Log("You died! Restarting level in 5 seconds...");
-        enemies = FindObjectsOfType<FollowPlayer>();
+    // Game over sequence
+    IEnumerator DisplayGameOver() {
+        Debug.Log("You died! Restarting level...");
+        enemies = FindObjectsOfType<FollowPlayer>(); // Find all objects of type FollowPlayer
 
+        // For every enemy in the enemies array, freeze each enemy (similar to what we did with the player)
         for(int i = 0; i <= enemies.Length - 1; i++) {
             enemies[i].FreezeEnemies();
         }
         
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1); // Wait one second
 
-        StartCoroutine(FadeIn());
-        SceneManager.LoadScene("Level1");
+        StartCoroutine(FadeIn()); // Fade into the level
+
+        // Get the active scene - used to restart a specific level
+        Scene scene = SceneManager.GetActiveScene();
+        Debug.Log(scene.name);
+
+        // Restarts the level
+        switch (scene.name) {
+            case "Level1":
+                SceneManager.LoadScene("Level1");
+                break;
+            case "Level2":
+                SceneManager.LoadScene("Level2");
+                break;
+            case "Level3":
+                SceneManager.LoadScene("Level3");
+                break;
+        }
+
         Debug.Log("Restarting level now!");
     }
 

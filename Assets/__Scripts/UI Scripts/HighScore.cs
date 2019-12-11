@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class HighScore : MonoBehaviour {
     #region public variables
-    public Text highScoreText;
+    public Text collectiblesText;
+    public Text enemiesText;
     #endregion
 
     void Start() {
-        //highScoreText.text = "High Score: " + PlayerPrefs.GetInt("High Score");
+        collectiblesText.text = PlayerPrefs.GetInt("Collectibles").ToString();
+        enemiesText.text = PlayerPrefs.GetInt("Enemies").ToString();
     }
 }
