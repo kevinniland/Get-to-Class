@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour {
     #region public variables
-    public static bool isBillyDead = false; // This is accessible from and can be checked whether or not Billy is dead from other scripts
     public PlayerMovement playerMovement;
     public SceneFader sceneFader; // Reference to scene fader object
+    public LayerMask accessibleLayers; // Determines what layers the player can jump/move on
     public bool isMoving = true;
     #endregion
 
@@ -33,12 +33,7 @@ public class PlayerMovement : MonoBehaviour {
         // Calculate new X position
         var newXPos = transform.position.x + deltaX;
 
-        // Check vertical
-        //var deltaY = Input.GetAxis("Vertical");
-        //var newYPos = transform.position.y + deltaY;
-
         // Set current game object to the new position
-        // transform.position = new Vector2(newXPos, newYPos);
         transform.position = new Vector2(newXPos, transform.position.y);
     }
 

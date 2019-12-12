@@ -20,14 +20,17 @@ public class BackgroundLoop : MonoBehaviour {
         /* Retrieves the dimensions of the camera in world space
          * ========================================================
          * Takes the screen width & height and then plots it on an x and y axis
-         */ 
-        screenBounds = camera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, camera.transform.position.z)); // Retrieves the dimensions of the camera in world space
+         * 
+         * Retrieves the dimensions of the camera in world space
+         */
+        screenBounds = camera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, camera.transform.position.z));
 
         /* Iterates through the game objects contained in the list
          * ========================================================
          * 'gameObject' creates a local reference which contains the value of the current row in the list.
          * Doing this, we can call the function 'LoadChildObjects' and pass 'gameObject' in as a reference - this goes through 
-         * the entire list of sprites and repeat the last one first, then the second last one and so on. In Unity, we define the size of the list and define each element afterwards
+         * the entire list of sprites and repeat the last one first, then the second last one and so on. In Unity, we define the size of the list 
+         * and define each element afterwards
          */
         foreach (GameObject gameObject in levels) {
             LoadChildObjects(gameObject);

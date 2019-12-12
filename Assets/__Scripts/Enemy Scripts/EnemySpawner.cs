@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour {
     private Enemy enemy; // Reference to the enemy prefab
 
     [SerializeField]
-    private int maxEnemies = 25; // Determines maximum number of enemies that can be spawned
+    private int maxEnemies = 25; // Determines maximum number of enemies that can be spawned (can be changed)
 
     private GameObject enemyParent; // Reference to the enemy parent object
     private int enemyCounter = 0; // Counter for enemies. It is incremented on enemy spawn
@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour {
          * are spawned. A bigger value will make it so that each enemy is spaced a good distance away from the next enemy
          */ 
         if (enemyCounter < maxEnemies) {
-            enemy.transform.position = new Vector2(Random.Range(0, 1000f), 0);
+            enemy.transform.position = new Vector2(Random.Range(15, 1000f), 0);
 
             // Instantiate each enemy based on the positions calculated above
             Instantiate<Enemy>(enemy, enemyParent.transform);

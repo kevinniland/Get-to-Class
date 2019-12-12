@@ -26,12 +26,11 @@ public class FollowPlayer : MonoBehaviour {
             transform.position = Vector2.MoveTowards(transform.position, player.position, enemySpeed * Time.deltaTime);
         }
     }
-    public void FreezeEnemies() {
-        enemySpeed = 0.0f;
-        transform.SetPositionAndRotation(transform.position, new Quaternion(0, 0, 0, 0));
-    }
 
-    public void ResetSpeed() {
-        enemySpeed = 1.0f;
+    // Freeze enemies in place on game over. Enemies will return to normal speed once the level has restarted
+    public void FreezeEnemies() {
+        enemySpeed = 0.0f; // Set speed of enemies to 0
+
+        transform.SetPositionAndRotation(transform.position, new Quaternion(0, 0, 0, 0)); // Set any and all rotations to 0 as well
     }
 }

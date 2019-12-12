@@ -429,7 +429,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneFader: {fileID: 1520090622}
-  buttonLevelArray: []
 --- !u!4 &1411743232
 Transform:
   m_ObjectHideFlags: 0
@@ -865,7 +864,7 @@ PrefabInstance:
     - target: {fileID: 184045440593913768, guid: c25b4c358e37a6a4dbf58366894a2254,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 184045440593913766, guid: c25b4c358e37a6a4dbf58366894a2254,
         type: 3}

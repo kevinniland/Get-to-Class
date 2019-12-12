@@ -14,6 +14,7 @@ TagManager:
   - MoveLeft
   - MoveRight
   - Enemies
+  - Locker
   layers:
   - Default
   - TransparentFX
@@ -24,9 +25,9 @@ TagManager:
   - 
   - 
   - Ground
-  - 
-  - 
-  - 
+  - OneWay
+  - Player
+  - GroundLayer
   - 
   - 
   - 

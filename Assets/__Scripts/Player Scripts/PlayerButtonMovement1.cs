@@ -14,11 +14,6 @@ public class PlayerButtonMovement1 : MonoBehaviour {
     private bool isMoving = false;
     #endregion
 
-    // Start is called before the first frame update
-    void Start() {
-
-    }
-
     // Update is called once per frame
     void Update() {
         if (isMoving == true) {
@@ -34,10 +29,12 @@ public class PlayerButtonMovement1 : MonoBehaviour {
         }
     }
 
+    // If button is pressed, the player is determined to be moving
     public void KeyDown() {
         isMoving = true;
     }
 
+    // If button is not pressed, the player is determined to not be moving
     public void KeyUp() {
         isMoving = false;
     }

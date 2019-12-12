@@ -4,9 +4,11 @@ using UnityEngine;
 
 namespace Utilities {
     public class ParentUtils {
+        #region public variables
         public const string ENEMY_PARENT = "EnemyParent";
         public const string GROUND_PARENT = "GroundParent";
         public const string LOCKER_PARENT = "LockerParent";
+        #endregion
 
         // Gets the enemy parent object
         public static GameObject GetEnemyParent() {
